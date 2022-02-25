@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Task Tracker';
+
   constructor() {}
 
   //Lifecycle method use this when u want ur code to run with application initialize
