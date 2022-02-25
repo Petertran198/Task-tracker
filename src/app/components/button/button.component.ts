@@ -13,4 +13,9 @@ export class ButtonComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  //Added methods
+  addTask() {
+    console.log('adding task');
+  }
 }
