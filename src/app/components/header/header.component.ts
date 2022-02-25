@@ -11,4 +11,7 @@ export class HeaderComponent implements OnInit {
 
   //Lifecycle method use this when u want ur code to run with application initialize
   ngOnInit(): void {}
+  toggleAddTask() {
+    console.log('Adding Task');
+  }
 }
