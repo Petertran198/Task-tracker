@@ -23,6 +23,10 @@ export class TasksComponent implements OnInit {
       );
   }
   toggleTask(task: Task) {
+    //Update the U.I. part of updating task.reminder
     task.reminder = !task.reminder;
+    //Update the task.reminder via server to actually save tasks data
+    //subscribe is basically .then of js
+    this.taskService.toggleTaskRemainder(task).subscribe();
   }
 }
