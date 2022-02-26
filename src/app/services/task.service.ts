@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Task } from '../data/Task';
-import { TASKS } from '../data/mock-tasks';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +17,11 @@ export class TaskService {
   getTasks(): Observable<Task[]> {
     //http.get is angular version to fetch async data
     return this.http.get<Task[]>(this.taskItemsUrl);
+  }
+
+  //Method to delete async data using JSON Server
+  deleteTask(task: Task): Observable<Task> {
+    const url = `${this.taskItemsUrl}/${task.id}`;
+    return this.http.delete<Task>(url);
   }
 }
