@@ -34,6 +34,11 @@ export class TaskService {
   toggleTaskRemainder(task: Task): Observable<Task> {
     const url = `${this.taskItemsUrl}/${task.id}`;
     //.put requires a url, the updated obj, and httpHeader obj
+    // put are for updated actions while post are for create actions
     return this.http.put<Task>(url, task, httpOptions);
+  }
+
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.taskItemsUrl, task, httpOptions);
   }
 }

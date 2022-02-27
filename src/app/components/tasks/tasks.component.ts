@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
     // This subscribe method will update and rerun getTask if any data NEW data was added/updated/deleted
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
+
   deleteTask(task: Task) {
     this.taskService
       .deleteTask(task)
@@ -28,5 +29,11 @@ export class TasksComponent implements OnInit {
     //Update the task.reminder via server to actually save tasks data
     //subscribe is basically .then of js
     this.taskService.toggleTaskRemainder(task).subscribe();
+  }
+
+  addTask(task: Task) {
+    this.taskService
+      .addTask(task)
+      .subscribe((task) => (this.tasks = [...this.tasks, task]));
   }
 }
