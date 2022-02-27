@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/data/Task';
+import { TaskUIService } from 'src/app/services/task-ui.service';
 @Component({
   selector: 'app-add-task-form',
   templateUrl: './add-task-form.component.html',
@@ -10,8 +11,16 @@ export class AddTaskFormComponent implements OnInit {
   addTextField: string;
   dayField: string;
   reminder: boolean = false;
+  isTaskFormShown: boolean = false;
 
-  constructor() {}
+  constructor(private taskUIService: TaskUIService) {
+    //This will allow us to be able to listen to the taskUiService and see if whatever is in OnToggleTask is changed
+    this.taskUIService
+      .onToggleTask()
+      .subscribe(
+        (taskShownBoolean) => (this.isTaskFormShown = taskShownBoolean)
+      );
+  }
 
   ngOnInit(): void {}
 
