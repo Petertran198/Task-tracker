@@ -1,6 +1,7 @@
 <header>
   <h1>{{ title }}</h1>
   <app-button
+    *ngIf="isOnHome('/')"
     text="{{ isTaskFormShown ? 'Close' : 'Add' }}"
     color="{{ isTaskFormShown ? 'red' : 'green' }}"
     (btnClick)="toggleAddTask()"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // Allow us to listen/subscribe to the uiService act accordingly to the data passed
 import { Subscription } from 'rxjs';
 import { TaskUIService } from 'src/app/services/task-ui.service';
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   isTaskFormShown: boolean = false;
   subscription: Subscription;
 
-  constructor(private taskUiService: TaskUIService) {
+  constructor(private taskUiService: TaskUIService, private router: Router) {
     //This will allow us to be able to listen to the taskUiService and see if whatever is in OnToggleTask is changed
     this.subscription = this.taskUiService
       .onToggleTask()
@@ -26,5 +27,10 @@ export class HeaderComponent implements OnInit {
 
   toggleAddTask() {
     this.taskUiService.toggleAddTask();
+  }
+
+  isOnHome(route: string) {
+    //this.router.url lets us know what page we are on
+    return route === this.router.url;
   }
 }
